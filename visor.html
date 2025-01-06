@@ -110,48 +110,69 @@
     </header>
     <!--Header Final-->
     <!--Contenido-->
-    <main class="responsive max medium-line" style="">
-        <div class="area-article">
-        <article class="round no-padding page bottom active" style="height:16vh; width: 150vh; display: flex; flex-direction: row; background: white;">
-            <div class="visor-logo">
-                <img src="./assets/educuna.jpg">
-            </div>
-            <div class="visor-menu">
-                <div class="visor-menu-list">
-                    <img src="./img/icon-politicas.png" alt="">
-                    <p>Políticas</p>
-                </div>
-                <div class="visor-menu-list-space"></div>
-                <div class="visor-menu-list">
-                    <img src="./img/icon-fondos.png" alt="">
-                    <p>Políticas</p>
-                </div>
-                <div class="visor-menu-list-space"></div>
-                <div class="visor-menu-list">
-                    <img src="./img/icon-suministros.png" alt="">
-                    <p>Políticas</p>
-                </div>
-                <div class="visor-menu-list-space"></div>
-                <div class="visor-menu-list">
-                    <img src="./img/icon-produccion.png" alt="">
-                    <p>Políticas</p>
-                </div>
-                <div class="visor-menu-list-space"></div>
-                <div class="visor-menu-list">
-                    <img src="./img/icon-cobertura.png" alt="">
-                    <p>Políticas</p>
-                </div>
-                <div class="visor-menu-list-space"></div>
-                <div class="visor-menu-list">
-                    <img src="./img/icon-resultados.png" alt="">
-                    <p>Políticas</p>
-                </div>
-            </div>
-        </article>
-        </div>
+    <main class="responsive max medium-line">
         <div class="large-space"></div>
         
         <section class="responsive page left active" style="max-inline-size: 100rem !important;">
+            <article class="round no-padding page bottom active topbar">
+                <div class="visor-logo">
+                    <img src="./assets/educuna.jpg">
+                </div>
+                <div class="visor-menu-container">
+                    <div class="visor-menu">
+                        <div class="visor-menu-list">
+                            <img src="./img/icon-politicas.png" alt="">
+                            <p>Políticas</p>
+                        </div>
+            
+                        <div class="visor-menu-list-space"></div>
+                        <div class="visor-menu-list">
+                            <img src="./img/icon-fondos.png" alt="">
+                            <p>Fondos</p>
+                        </div>
+                        <div class="visor-menu-list-space"></div>
+                        <div class="visor-menu-list">
+                            <img src="./img/icon-suministros.png" alt="">
+                            <p>Suministros</p>
+                        </div>
+                        <div class="visor-menu-list-space"></div>
+                        <div class="visor-menu-list">
+                            <img src="./img/icon-produccion.png" alt="">
+                            <p>Producción</p>
+                        </div>
+                        <div class="visor-menu-list-space"></div>
+                        <div class="visor-menu-list">
+                            <img src="./img/icon-cobertura.png" alt="">
+                            <p>Cobertura</p>
+                        </div>
+                        <div class="visor-menu-list-space"></div>
+                        <div class="visor-menu-list">
+                            <img src="./img/icon-resultados.png" alt="">
+                            <p>Resultados</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        <div class="grid">
+            
+            <div class="s12 m6 l5">
+                <div class="wave round wrap">
+                    <article class="no-padding">
+                        <img class="responsive medium" src="./assets/pronied.jpg">
+                    </article>
+                </div>
+            </div>
+            <div class="s12 m6 l7">
+                <div class="wave round wrap">
+                    <article class="no-padding">
+                        <img class="responsive medium" src="./assets/pronabec.jpg">
+                    </article>
+                </div>
+            </div>
+        </div>
+
+            <!--asdasda-->
+            
             <h5 class="">Últimas actualizaciones</h5>
             <div class="large-space"></div>
             <div class="large-space"></div>
@@ -167,5 +188,37 @@
     </main>
     <!--Contenido Final-->
 </body>
+<script>
+    const visorMenu = document.querySelector('.visor-menu');
 
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        visorMenu.addEventListener('mousedown', (e) => {
+            isDown = true;
+            visorMenu.classList.add('active');
+            startX = e.pageX - visorMenu.offsetLeft;
+            scrollLeft = visorMenu.scrollLeft;
+        });
+
+        visorMenu.addEventListener('mouseleave', () => {
+            isDown = false;
+            visorMenu.classList.remove('active');
+        });
+
+        visorMenu.addEventListener('mouseup', () => {
+            isDown = false;
+            visorMenu.classList.remove('active');
+        });
+
+        visorMenu.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - visorMenu.offsetLeft;
+            const walk = (x - startX) * 2; // Velocidad de desplazamiento
+            visorMenu.scrollLeft = scrollLeft - walk;
+        });
+
+</script>
 </html>
